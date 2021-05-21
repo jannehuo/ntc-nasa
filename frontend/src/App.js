@@ -1,24 +1,31 @@
-import * as React from "react";
-import "./scss/App.scss";
-
-const url = "http://localhost:8000/data";
+import * as React from 'react'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import Nav from './components/Nav'
+import Frontpage from './routes/Frontpage/frontpage'
+import Year from './routes/Year/year'
+import { FRONTPAGE, YEAR } from './paths'
+import './scss/App.scss'
 
 const App = () => {
-  React.useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(result)
-        },
-        (e) => {
-          console.log(e)
-        }
-      );
-  }, []);
   return (
-    <h1>JEEJEE</h1>
+    <Router>
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <div className='app-container'>
+          <Switch>
+            <Route path={`${YEAR}`}>
+              <Year />
+            </Route>
+            <Route path={`${FRONTPAGE}`}>
+              <Frontpage />
+            </Route>
+          </Switch>
+        </div>
+      </main>
+    </Router>
   )
-};
+}
 
-export default App;
+export default App

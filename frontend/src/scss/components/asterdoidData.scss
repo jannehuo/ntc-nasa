@@ -1,0 +1,73 @@
+.asteroid-data-container {
+  background: rgb(35, 36, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(35, 36, 0, 1) 0%,
+    rgba(66, 66, 103, 1) 51%,
+    rgba(74, 155, 171, 1) 100%
+  );
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 20px -10px #3a1c71;
+}
+
+.asteroid-card {
+  overflow: hidden;
+  .asteroid-card-header {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f2f2f2;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    height: 150px;
+    .fas {
+      font-size: 6em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+    .asteroid-card-header-size {
+      background-color: #4d50b3;
+      display: inline-block;
+      padding: 10px;
+      position: absolute;
+      bottom: -18px;
+      right: 20px;
+    }
+  }
+  .asteroid-card-data {
+    background-color: #fff;
+    padding: 30px 20px 20px 20px;
+    text-align: center;
+    .asteroid-card-data-info-list {
+      max-width: 400px;
+      width: 100%;
+      margin: 30px auto;
+      li {
+        display: flex;
+        .asteroid-card-data-info-list-label,
+        .asteroid-card-data-info-list-value {
+          width: 50%;
+          padding: 5px 10px;
+        }
+        .asteroid-card-data-info-list-label {
+          text-align: right;
+        }
+        .asteroid-card-data-info-list-value {
+          text-align: left;
+          font-weight: 700;
+        }
+      }
+    }
+    .asteroid-card-data-info-approach-info-list {
+      display: flex;
+      justify-content: space-between;
+      li {
+        text-align: left;
+      }
+    }
+  }
+}

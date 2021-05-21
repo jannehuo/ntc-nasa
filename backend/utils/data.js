@@ -3,7 +3,7 @@ const axios = require('axios')
 const helpers = require('../utils/helpers')
 
 function handleResponseData(data) {
-  const asteroidsList = helpers.createAsteroidsList(data.near_earth_objects)
+  const asteroidsList = helpers.createAsteroidsList(data)
   const largestAsteroid = helpers.getLargestAsteroid(asteroidsList)
   return largestAsteroid
 }
@@ -30,7 +30,7 @@ function fetchLargestAsteroid(req, res) {
   const url = helpers.createApiUrl(constants.START_DATE, constants.END_DATE)
   getData(url)
     .then((response) => {
-      res.send(handleResponseData(response.data))
+      res.send(handleResponseData(response.data.near_earth_objects))
     })
     .catch((err) => {
       handleError(err, res)
@@ -42,9 +42,13 @@ function delay(t) {
 }
 
 async function runApiCalls(promises) {
-  let results = []
+  let results = {}
   for (let promise of promises) {
-    results.push(await delay().then(() => promise))
+    const res = await delay(constants.API_CALL_DELAY).then(() => promise)
+    results = {
+      ...results,
+      ...res,
+    }
   }
   return results
 }
@@ -59,7 +63,7 @@ async function fetchLargestAsteroidForYear(req, res) {
       axios.get(url).then((res) => res.data.near_earth_objects)
     )
     const results = await runApiCalls(promises)
-    res.send(results)
+    res.send(handleResponseData(results))
   } else {
     res.sendStatus(400)
   }
