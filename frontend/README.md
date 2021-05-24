@@ -1,3 +1,5 @@
 ## Ntc-nasa - Frontend
 
-**npm start** to run on localhost
+**npm run start** to run on localhost:3000
+
+**npm run test** to run unit tests

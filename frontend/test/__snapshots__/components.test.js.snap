@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test frontpage Should render asteroid data 1`] = `
+<div
+  className="asteroid-data-container"
+>
+  <span
+    className="sr-only"
+  >
+    Asteroid data ready
+  </span>
+  <div
+    className="asteroid-card"
+  >
+    <div
+      className="asteroid-card-header"
+    >
+      <i
+        aria-hidden="true"
+        className="fas fa-meteor"
+      />
+      <div
+        className="asteroid-card-header-size"
+      >
+        Estimated:
+         
+        1.58
+         
+        km
+      </div>
+    </div>
+    <div
+      className="asteroid-card-data"
+    >
+      <div
+        className="asteroid-card-data-info"
+      >
+        <h2>
+          22099 (2000 EX106)
+        </h2>
+        <ul
+          className="asteroid-card-data-info-list"
+        >
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Kilometers
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              1.58
+            </p>
+          </li>
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Meters
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              1577.76
+            </p>
+          </li>
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Magnitude
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              17.88
+            </p>
+          </li>
+        </ul>
+        <ul
+          className="asteroid-card-data-info-approach-info-list"
+        >
+          <li>
+            <p>
+              Date
+            </p>
+            <p>
+              2015-12-20
+            </p>
+          </li>
+          <li>
+            <p>
+              Speed
+            </p>
+            <p>
+              27010.82
+               
+              km/h
+            </p>
+          </li>
+          <li>
+            <p>
+              Distance
+            </p>
+            <p>
+              46415376.53
+               
+              km
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test frontpage Should render loader 1`] = `
+<div
+  className="loader-container"
+>
+  <h1>
+    Fetching data. Please wait.
+  </h1>
+  <div
+    className="loader-icon-container"
+  >
+    <i
+      aria-hidden="true"
+      className="fas fa-meteor"
+    />
+  </div>
+</div>
+`;
+
+exports[`Test frontpage Should render navigation 1`] = `
+<div
+  className="nav-container"
+>
+  <h1
+    className="project-header"
+  >
+    <a
+      href="#/"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="fas fa-globe"
+      />
+      <span>
+        NTC Nasa
+      </span>
+    </a>
+  </h1>
+  <nav>
+    <ul
+      className="nav-links"
+    >
+      <li>
+        <a
+          href="#/"
+          onClick={[Function]}
+        >
+          Frontpage
+        </a>
+      </li>
+      <li>
+        <a
+          href="#/year"
+          onClick={[Function]}
+        >
+          Find by year
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`Test frontpage Should render notification for status 429 1`] = `
+<div
+  className="notification-container"
+>
+  <i
+    className="fas fa-exclamation-circle"
+  />
+  <span>
+    Too Many Requests
+  </span>
+</div>
+`;
+
+exports[`Test frontpage Should render notification for status 500 1`] = `
+<div
+  className="notification-container"
+>
+  <i
+    className="fas fa-exclamation-circle"
+  />
+  <span>
+    Something went wrong. Try again!
+  </span>
+</div>
+`;
+
+exports[`Test frontpage Should render notification for status 503 1`] = `
+<div
+  className="notification-container"
+>
+  <i
+    className="fas fa-exclamation-circle"
+  />
+  <span>
+    Backend service is unavailable
+  </span>
+</div>
+`;

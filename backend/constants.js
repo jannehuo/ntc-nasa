@@ -3,4 +3,5 @@ module.exports = {
   START_DATE: '2015-12-19',
   END_DATE: '2015-12-26',
   API_CALL_DELAY: 100,
+  DEFAULT_TTL: 3600,
 }

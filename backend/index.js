@@ -20,3 +20,5 @@ app.get('/largest/:year', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running at https://localhost:${PORT}`)
 })
+
+module.exports = app

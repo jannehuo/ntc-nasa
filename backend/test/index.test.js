@@ -2,6 +2,15 @@ const chai = require('chai')
 const mocha = require('mocha')
 const asteroids = require('./testData/astedoids')
 const helpers = require('../utils/helpers')
+const cache = require('../utils/cache')
+const app = require('../index')
+const chaiHttp = require('chai-http')
+const constants = require('../constants')
+
+chai.should()
+chai.use(chaiHttp)
+
+const TEST_TIMEOUT = 60000
 
 describe('Test utility functions', () => {
   const astedoidsList = helpers.createAsteroidsList(asteroids)
@@ -23,10 +32,39 @@ describe('Test utility functions', () => {
     chai
       .expect(urls)
       .to.deep.equal([
-        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-01&end_date=2021-01-08&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
-        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-09&end_date=2021-01-16&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
-        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-17&end_date=2021-01-24&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
-        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-25&end_date=2021-01-31&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
+        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-01&end_date=2021-01-07&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
+        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-08&end_date=2021-01-14&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
+        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-15&end_date=2021-01-21&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
+        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-22&end_date=2021-01-28&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
+        'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-01-29&end_date=2021-01-31&api_key=GYYVHEALmECqZp0eIQ6OFerSGO4grq98iwhyVH6O',
       ])
   })
+  it('Should call api for largest asteroid and store it to cache', (done) => {
+    chai
+      .request(app)
+      .get('/largest')
+      .end((err, response) => {
+        const status = response.status
+        const cachedData = cache.get(
+          `${constants.START_DATE}-${constants.END_DATE}`
+        )
+        chai.expect(status).to.equal(200)
+        chai.expect(typeof cachedData).to.equal('object')
+        done()
+      })
+  }).timeout(TEST_TIMEOUT)
+  it('Should call api for largest asteroid for year and store it to cache', (done) => {
+    process.env.TEST = true
+    chai
+      .request(app)
+      .get('/largest/2015')
+      .end((err, response) => {
+        const status = response.status
+        const cachedData = cache.get('2015')
+        chai.expect(status).to.equal(200)
+        chai.expect(typeof cachedData).to.equal('object')
+        delete process.env.TEST
+        done()
+      })
+  }).timeout(TEST_TIMEOUT)
 })

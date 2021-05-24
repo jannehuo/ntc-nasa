@@ -1,6 +1,9 @@
 const constants = require('../constants')
 const _ = require('lodash')
 
+/** Sort given array with asteroid data by largest estimated km diameter
+ *  and return the first from the list
+ */
 function getLargestAsteroid(data) {
   const sorted = data.sort(
     (a, b) =>
@@ -10,6 +13,9 @@ function getLargestAsteroid(data) {
   return sorted[0]
 }
 
+/** Push all data from different dates to one array to help searching for
+ *  largest asteroid.
+ */
 function createAsteroidsList(data) {
   const keys = Object.keys(data)
   const asteroidsList = keys.reduce((acc, key) => {
@@ -20,6 +26,7 @@ function createAsteroidsList(data) {
   return asteroidsList
 }
 
+/** Create date string used in api calls */
 function createDateString(date) {
   if (date) {
     return date.toISOString().split('T')[0]
@@ -27,6 +34,7 @@ function createDateString(date) {
   return null
 }
 
+/** Create array of dates between given dates */
 function datesBetweenRange(start, end) {
   let dates = []
   const startDate = new Date(start)
@@ -38,6 +46,11 @@ function datesBetweenRange(start, end) {
   return dates.map(createDateString)
 }
 
+/** Create api calls from array of dates. Chunks the date array
+ *  in to chunks of 7 and use first and last date of the chunk as
+ *  a start date and end date for api call to Nasa feed api. Returns a
+ *  list of api urls.
+ */
 function createApiCalls(start, end) {
   const datesList = datesBetweenRange(start, end)
   const dateChunks = _.chunk(datesList, 7)
@@ -55,16 +68,11 @@ function createApiUrl(start, end) {
   return `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start}&end_date=${end}&api_key=${constants.API_KEY}`
 }
 
-function isLeapYear(year) {
-  return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
-}
-
 module.exports = {
   createAsteroidsList,
   getLargestAsteroid,
   createApiCalls,
   datesBetweenRange,
   createApiUrl,
-  isLeapYear,
   createDateString,
 }

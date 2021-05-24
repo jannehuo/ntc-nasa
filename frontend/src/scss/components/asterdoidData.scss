@@ -1,3 +1,5 @@
+@import '../mixins.scss';
+
 .asteroid-data-container {
   background: rgb(35, 36, 0);
   background: linear-gradient(
@@ -28,6 +30,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
+      @include slide-in-stop;
     }
     .asteroid-card-header-size {
       background-color: #4d50b3;
