@@ -1,4 +1,4 @@
-# Ntc-nasa - Frontend
+# Ntc-nasa
 
 ## Overview
 
