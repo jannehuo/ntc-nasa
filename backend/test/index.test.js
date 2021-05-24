@@ -67,4 +67,8 @@ describe('Test utility functions', () => {
         done()
       })
   }).timeout(TEST_TIMEOUT)
+  it('Should return asteroid with closest miss distance', () => {
+    const closestAsteroid = helpers.getClosestAsteroid(astedoidsList)
+    chai.expect(closestAsteroid.id).to.equal('3445605')
+  })
 })

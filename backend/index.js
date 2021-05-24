@@ -9,7 +9,7 @@ const PORT = 8000
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/largest', (req, res) => {
+app.get('/closest', (req, res) => {
   data.fetchLargestAsteroid(req, res)
 })
 

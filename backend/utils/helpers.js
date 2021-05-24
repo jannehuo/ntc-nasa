@@ -1,6 +1,24 @@
 const constants = require('../constants')
 const _ = require('lodash')
 
+function sortMissDistances(distances) {
+  return distances.sort((a, b) => {
+    parseFloat(a.miss_distance.lunar) - parseFloat(b.miss_distance.lunar)
+  })
+}
+
+function getClosestAsteroid(data) {
+  const closest = data.sort((a, b) => {
+    const missDistancesSortedForA = sortMissDistances(a.close_approach_data)
+    const missDistancesSortedForB = sortMissDistances(b.close_approach_data)
+    return (
+      parseFloat(missDistancesSortedForA[0].miss_distance.lunar) -
+      parseFloat(missDistancesSortedForB[0].miss_distance.lunar)
+    )
+  })
+  return closest[0]
+}
+
 /** Sort given array with asteroid data by largest estimated km diameter
  *  and return the first from the list
  */
@@ -75,4 +93,5 @@ module.exports = {
   datesBetweenRange,
   createApiUrl,
   createDateString,
+  getClosestAsteroid,
 }

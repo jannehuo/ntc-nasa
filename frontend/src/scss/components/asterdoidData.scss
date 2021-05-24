@@ -11,6 +11,15 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 5px 20px -10px #3a1c71;
+  &--closest {
+    background: rgb(35, 36, 0);
+    background: linear-gradient(
+      90deg,
+      rgba(35, 36, 0, 1) 0%,
+      rgba(176, 84, 114, 1) 50%,
+      rgba(171, 129, 74, 1) 100%
+    );
+  }
 }
 
 .asteroid-card {
@@ -32,7 +41,7 @@
       -webkit-transform: translate(-50%, -50%);
       @include slide-in-stop;
     }
-    .asteroid-card-header-size {
+    .asteroid-card-header-tab {
       background-color: #4d50b3;
       display: inline-block;
       padding: 10px;
@@ -70,6 +79,13 @@
       justify-content: space-between;
       li {
         text-align: left;
+      }
+    }
+  }
+  &--closest {
+    .asteroid-card-header {
+      .asteroid-card-header-tab {
+        background-color: #a85432;
       }
     }
   }

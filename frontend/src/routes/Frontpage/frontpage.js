@@ -4,7 +4,7 @@ import AsteroiData from '../../components/AsteroidData'
 import Loader from '../../components/Loader'
 import Notification from '../../components/Notification'
 
-const url = 'http://localhost:8000/largest'
+const url = 'http://localhost:8000/closest'
 
 const initialApiState = { visible: false, status: undefined }
 
@@ -38,9 +38,9 @@ function Frontpage() {
     <div role='status'>
       {!loading && (
         <React.Fragment>
-          <h1>Largest asteroid</h1>
+          <h1>Closest asteroid</h1>
           <p>16-12-2015 - 22-12-2015</p>
-          <AsteroiData data={asteroidData} />
+          <AsteroiData data={asteroidData} mode='closest' />
         </React.Fragment>
       )}
       <Loader visible={loading} />

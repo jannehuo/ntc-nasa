@@ -103,7 +103,7 @@ function Year() {
       </form>
       <div role='status'>
         <Loader visible={loading} />
-        <AsteroiData data={asteroidData} />
+        <AsteroiData data={asteroidData} mode='largest' />
         <Notification data={apiError} />
       </div>
     </div>

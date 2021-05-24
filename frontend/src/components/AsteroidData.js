@@ -4,27 +4,38 @@ import formatNumber from '../helpers/numbers'
 import '../scss/components/asterdoidData.scss'
 
 function AsteroidData(props) {
-  const { data } = props
+  const { data, mode } = props
   if (!data) {
     return null
   }
   const closeApproach = get(data, 'close_approach_data')
+
+  const CardHeader = () => {
+    if (mode === 'closest') {
+      return 'Closest'
+    }
+    return 'Largest'
+  }
   return (
-    <div className='asteroid-data-container'>
+    <div
+      className={
+        mode === 'closest'
+          ? 'asteroid-data-container asteroid-data-container--closest'
+          : 'asteroid-data-container'
+      }
+    >
       <span className='sr-only'>Asteroid data ready</span>
-      <div className='asteroid-card'>
+      <div
+        className={
+          mode === 'closest'
+            ? 'asteroid-card asteroid-card--closest'
+            : 'asteroid-card'
+        }
+      >
         <div className='asteroid-card-header'>
           <i className='fas fa-meteor' aria-hidden='true'></i>
-          <div className='asteroid-card-header-size'>
-            Estimated:{' '}
-            {formatNumber(
-              get(
-                data,
-                'estimated_diameter.kilometers.estimated_diameter_max',
-                ''
-              )
-            )}{' '}
-            km
+          <div className='asteroid-card-header-tab'>
+            <CardHeader />
           </div>
         </div>
         <div className='asteroid-card-data'>

@@ -3,12 +3,13 @@ const axios = require('axios')
 const helpers = require('../utils/helpers')
 const cache = require('../utils/cache')
 
-function handleResponseData(data) {
+function handleResponseData(data, getLargest = false) {
   /** List all asteroids from different dates under one array */
   const asteroidsList = helpers.createAsteroidsList(data)
   /** Search for largest astedoid based on estimated max size and return it */
-  const largestAsteroid = helpers.getLargestAsteroid(asteroidsList)
-  return largestAsteroid
+  return getLargest
+    ? helpers.getLargestAsteroid(asteroidsList)
+    : helpers.getClosestAsteroid(asteroidsList)
 }
 
 function getData(url) {
@@ -102,7 +103,7 @@ async function fetchLargestAsteroidForYear(req, res) {
           .catch((err) => handleError(err, res))
       )
       const results = await runApiCalls(promises)
-      const responseData = handleResponseData(results)
+      const responseData = handleResponseData(results, true)
       cache.set(year, responseData, constants.DEFAULT_TTL)
       res.send(responseData)
     }
