@@ -8,8 +8,17 @@ import Notification from '../src/components/Notification'
 import Nav from '../src/components/Nav'
 
 describe('Test frontpage', () => {
-  it('Should render asteroid data', () => {
-    const component = renderer.create(<AsteroidData data={asteroidData} />)
+  it('Should render asteroid data for closest asteroid', () => {
+    const component = renderer.create(
+      <AsteroidData data={asteroidData} mode='closest' />
+    )
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  it('Should render asteroid data for largest asteroid', () => {
+    const component = renderer.create(
+      <AsteroidData data={asteroidData} mode='largest' />
+    )
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

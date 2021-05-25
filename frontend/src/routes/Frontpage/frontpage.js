@@ -39,7 +39,7 @@ function Frontpage() {
       {!loading && (
         <React.Fragment>
           <h1>Closest asteroid</h1>
-          <p>16-12-2015 - 22-12-2015</p>
+          <p>Between: 16-12-2015 - 22-12-2015</p>
           <AsteroiData data={asteroidData} mode='closest' />
         </React.Fragment>
       )}

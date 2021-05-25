@@ -1,6 +1,118 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test frontpage Should render asteroid data 1`] = `
+exports[`Test frontpage Should render asteroid data for closest asteroid 1`] = `
+<div
+  className="asteroid-data-container asteroid-data-container--closest"
+>
+  <span
+    className="sr-only"
+  >
+    Asteroid data ready
+  </span>
+  <div
+    className="asteroid-card asteroid-card--closest"
+  >
+    <div
+      className="asteroid-card-header"
+    >
+      <i
+        aria-hidden="true"
+        className="fas fa-meteor"
+      />
+      <div
+        className="asteroid-card-header-tab"
+      >
+        Closest
+      </div>
+    </div>
+    <div
+      className="asteroid-card-data"
+    >
+      <div
+        className="asteroid-card-data-info"
+      >
+        <h2>
+          22099 (2000 EX106)
+        </h2>
+        <ul
+          className="asteroid-card-data-info-list"
+        >
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Kilometers
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              1.58
+            </p>
+          </li>
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Meters
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              1577.76
+            </p>
+          </li>
+          <li>
+            <p
+              className="asteroid-card-data-info-list-label"
+            >
+              Magnitude
+            </p>
+            <p
+              className="asteroid-card-data-info-list-value"
+            >
+              17.88
+            </p>
+          </li>
+        </ul>
+        <ul
+          className="asteroid-card-data-info-approach-info-list"
+        >
+          <li>
+            <p>
+              Date
+            </p>
+            <p>
+              2015-12-20
+            </p>
+          </li>
+          <li>
+            <p>
+              Speed
+            </p>
+            <p>
+              27010.82
+               
+              km/h
+            </p>
+          </li>
+          <li>
+            <p>
+              Distance
+            </p>
+            <p>
+              46415376.53
+               
+              km
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test frontpage Should render asteroid data for largest asteroid 1`] = `
 <div
   className="asteroid-data-container"
 >
@@ -20,13 +132,9 @@ exports[`Test frontpage Should render asteroid data 1`] = `
         className="fas fa-meteor"
       />
       <div
-        className="asteroid-card-header-size"
+        className="asteroid-card-header-tab"
       >
-        Estimated:
-         
-        1.58
-         
-        km
+        Largest
       </div>
     </div>
     <div

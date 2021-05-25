@@ -8,9 +8,9 @@ Application calls **Asteroids - NeoWs** Api and uses **Neo - Feed** endpoint to 
 
 ### Endpoints
 
-**localhost:8000/largest** Will fetch largest asteroid for harcoded dates between December 19th 2015 and December 26 2015
+**localhost:8000/closest** Will fetch closest passing asteroid for harcoded dates between December 19th 2015 and December 26 2015
 
-**localhost:8000/largest/YEAR** Will fetch largest asteroid for given year by making a list of calls to Nasa Feed Api. Es. **localhost:8000/largest/2015**
+**localhost:8000/largest/YEAR** Will fetch largest asteroid for given year by making a list of calls to Nasa Feed Api. Ex. **localhost:8000/largest/2015**
 
 ## Tech
 
